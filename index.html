@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Расчет стоимости маникюра</title>
+</head>
+<body>
+
+<h1>Расчет стоимости маникюра</h1>
+
+<!-- Категория 1: Постоянные расходы -->
+<div>
+    <h2>Категория 1: Постоянные расходы</h2>
+    <label for="rent">Аренда: </label>
+    <input type="number" id="rent" value="6600"><br>
+    <label for="utilities">Комуналка: </label>
+    <input type="number" id="utilities" value="600"><br>
+    <label for="internet">Интернет: </label>
+    <input type="number" id="internet" value="100"><br>
+    <label for="transport">Проезд: </label>
+    <input type="number" id="transport" value="320"><br>
+    <label for="clients">Количество клиентов в месяц: </label>
+    <input type="number" id="clients" value="33"><br>
+</div>
+
+
+<!-- Категория 2: Обязательные расходники -->
+<div>
+    <h2>Категория 2: Обязательные расходники</h2>
+    <label for="antiseptic">Антисептик: </label>
+    <input type="number" id="antiseptic" value="0"><br>
+    <label for="gloves">Перчатки: </label>
+    <input type="number" id="gloves" value="0"><br>
+    <label for="remover">Ремувер: </label>
+    <input type="number" id="remover" value="0"><br>
+    <label for="mask">Маска: </label>
+    <input type="number" id="mask" value="0"><br>
+    <label for="nap">Салфетки безворсовые: </label>
+    <input type="number" id="nap" value="0"><br>
+    <label for="wetNap">Салфетки влажные: </label>
+    <input type="number" id="wetNap" value="0"><br>
+    <label for="orange">Апельсиновые палочки: </label>
+    <input type="number" id="orange" value="0"><br>
+    <label for="craft">Крафт-пакет: </label>
+    <input type="number" id="craft" value="0"><br>
+    <label for="towel">Полотенце-спайнлейс: </label>
+    <input type="number" id="towel" value="0"><br>
+    <label for="disFat">Обезжириватель: </label>
+    <input type="number" id="disFat" value="0"><br>
+    <label for="degidrator">Дегидратор: </label>
+    <input type="number" id="degidrator" value="0"><br>
+    <label for="water">Вода: </label>
+    <input type="number" id="water" value="0"><br>
+    <label for="oil">Масло: </label>
+    <input type="number" id="oil" value="0"><br>
+    <label for="scretch">Пленка: </label>
+    <input type="number" id="scretch" value="0"><br>
+    <label for="sterilLiqud">Жидкость для стерилизации: </label>
+    <input type="number" id="sterilLiqud" value="0"><br>
+    <label for="frezerSchlif">Фреза для шлифовки: </label>
+    <input type="number" id="frezerSchlif" value="0"><br>
+</div>
+
+<!-- Категория 3: Дизайнерские расходники -->
+<div>
+    <h2>Категория 3: Дизайнерские расходники</h2>
+    <label for="base">База: </label>
+    <input type="number" id="base" value="0"><br>
+    <label for="gel">Гель: </label>
+    <input type="number" id="gel" value="0"><br>
+    <label for="gelLak">Гель-лак: </label>
+    <input type="number" id="gelLak" value="0"><br>
+    <label for="top">Топ: </label>
+    <input type="number" id="top" value="0"><br>
+    <label for="tips">Типсы: </label>
+    <input type="number" id="tips" value="0"><br>
+    <label for="frezerRemove">Фреза для снятия: </label>
+    <input type="number" id="frezerRemove" value="0"><br>
+    <label for="folga">Фольга: </label>
+    <input type="number" id="folga" value="0"><br>
+</div>
+
+<h2>Категория 4: Декор</h2>
+    <div id="decorFields">
+        <label for="decor1">Декор 1:</label>
+        <input type="number" id="decor1" value="0"><br>
+        <label for="decor2">Декор 2:</label>
+        <input type="number" id="decor2" value="0"><br>
+        <label for="decor3">Декор 3:</label>
+        <input type="number" id="decor3" value="0"><br>
+        <label for="decor4">Декор 4:</label>
+        <input type="number" id="decor4" value="0"><br>
+        <label for="decor5">Декор 5:</label>
+        <input type="number" id="decor5" value="0"><br>
+        <label for="decor6">Декор 6:</label>
+        <input type="number" id="decor6" value="0"><br>
+    </div>
+
+<!-- Категория 5: Сложность дизайна -->
+<h2>Категория 5: Сложность дизайна</h2>
+<label for="complexity">Сложность дизайна: </label>
+<select id="complexity">
+  <option value="1.3">Легкий</option>
+  <option value="1.5">Средний</option>
+  <option value="1.7">Сложный</option>
+</select><br>
+
+<button onclick="calculateTotal()">Рассчитать</button>
+
+<p id="total">Сумма: </p>
+
+<script>
+function calculateTotal() {
+  const rent = parseFloat(document.getElementById("rent").value);
+  const utilities = parseFloat(document.getElementById("utilities").value);
+  const internet = parseFloat(document.getElementById("internet").value);
+  const transport = parseFloat(document.getElementById("transport").value);
+  const clients = parseFloat(document.getElementById("clients").value);
+  
+    //Category 2
+  const antiseptic = parseFloat(document.getElementById("antiseptic").value) || 0;
+  const gloves = parseFloat(document.getElementById("gloves").value) || 0;
+  const remover = parseFloat(document.getElementById("remover").value) || 0;
+  const mask = parseFloat(document.getElementById("mask").value) || 0;
+  const nap = parseFloat(document.getElementById("nap").value) || 0;
+  const wetNap = parseFloat(document.getElementById("wetNap").value) || 0;
+  const orange = parseFloat(document.getElementById("orange").value) || 0;
+  const craft = parseFloat(document.getElementById("craft").value) || 0;
+  const towel = parseFloat(document.getElementById("towel").value) || 0;
+  const disFat = parseFloat(document.getElementById("disFat").value) || 0;
+  const degidrator = parseFloat(document.getElementById("degidrator").value) || 0;
+  const water = parseFloat(document.getElementById("water").value) || 0;
+  const oil = parseFloat(document.getElementById("oil").value) || 0;
+  const scretch = parseFloat(document.getElementById("scretch").value) || 0;
+  const sterilLiqud = parseFloat(document.getElementById("sterilLiqud").value) || 0;
+  const frezerSchlif = parseFloat(document.getElementById("frezerSchlif").value) || 0;
+  
+    //Category 3
+  const base = parseFloat(document.getElementById("base").value) || 0;
+  const gel = parseFloat(document.getElementById("gel").value) || 0;
+  const gelLak = parseFloat(document.getElementById("gelLak").value) || 0;
+  const top = parseFloat(document.getElementById("top").value) || 0;
+  const tips = parseFloat(document.getElementById("tips").value) || 0;
+  const frezerRemove = parseFloat(document.getElementById("frezerRemove").value) || 0;
+  const folga = parseFloat(document.getElementById("folga").value) || 0;
+    
+    //Category 4
+  const decor1 = parseFloat(document.getElementById("decor1").value) || 0;
+  const decor2 = parseFloat(document.getElementById("decor2").value) || 0;
+  const decor3 = parseFloat(document.getElementById("decor3").value) || 0;
+  const decor4 = parseFloat(document.getElementById("decor4").value) || 0;
+  const decor5 = parseFloat(document.getElementById("decor5").value) || 0;
+  const decor6 = parseFloat(document.getElementById("decor6").value) || 0;
+  
+  const complexity = parseFloat(document.getElementById("complexity").value);
+  
+  const category1Total = (rent + utilities + internet + transport) / clients;
+  const category2Total = antiseptic + gloves + remover + mask + nap + wetNap + orange + craft + towel + disFat + degidrator + water + oil + scretch + sterilLiqud + frezerSchlif;
+  const category3Total = base + gel + gelLak + top + tips + frezerRemove + folga/* Сумма остальных обязательных расходников */;
+  const category4Total = decor1 + decor2 + decor3 + decor4 + decor5 + decor6;
+  const total = (category1Total + category2Total + category3Total + category4Total) * complexity;
+  
+  document.getElementById("total").innerText = `Сумма: ${total.toFixed(2)}`;
+}
+</script>
+
+</body>
+</html>
